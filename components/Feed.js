@@ -53,6 +53,7 @@ export default class Feed extends Component {
       })
       .catch(error => {
         console.error(error);
+        alert(error.message);
       });
   }
 
@@ -75,6 +76,7 @@ export default class Feed extends Component {
           initialNumToRender={3}
           onEndReached={this.fetchMore.bind(this)}
           onEndThreshold={0}
+          removeClippedSubviews={true}
         />
       </Viewport.Tracker>
     );
