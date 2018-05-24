@@ -18,9 +18,12 @@
     "preset": "react-native"
   },
   "dependencies": {
+    "@n1ru4l/react-time-ago": "^1.1.0",
+    "@skele/components": "^1.0.0-alpha.28",
     "aws-amplify": "^0.4.1",
     "aws-amplify-react-native": "^0.2.11",
     "react": "16.3.1",
-    "react-native": "~0.55.2"
+    "react-native": "~0.55.2",
+    "react-native-video": "^2.0.0"
   }
 }
