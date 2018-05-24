@@ -16,6 +16,7 @@ class App extends React.Component {
           title: "Feed"
         }}
         style={{ flex: 1 }}
+        translucent={false}
       />
     );
   }
@@ -43,9 +44,7 @@ class FeedPage extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     alignItems: "center",
-    paddingTop: 25,
     backgroundColor: "#ecf0f1"
   }
 });

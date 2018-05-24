@@ -8,8 +8,9 @@ export default class Feed extends Component {
     super(props);
     this.state = {
       loaded: false,
-      data: null,
-      comments: []
+      posts: [],
+      comments: [],
+      refreshing: true
     };
   }
 
@@ -24,10 +25,35 @@ export default class Feed extends Component {
     let posts = await response.json();
     // let comments = await this.makeCommentsList(posts.data);
     this.setState({
-      data: posts,
+      posts: addIndicesToPosts(posts),
       // comments: comments,
-      loaded: true
+      loaded: true,
+      refreshing: false
     });
+  }
+
+  fetchMore() {
+    if (this.state.posts.length == 0) {
+      return;
+    }
+
+    console.log("fetchMore called. Size of posts: " + this.state.posts.length);
+
+    let response = fetch(
+      "http://develop.t89dqruqnm.us-east-1.elasticbeanstalk.com/api/v1/feed"
+    )
+      .then(response => response.json())
+      .then(responseJson => {
+        this.setState({
+          posts: addIndicesToPosts(this.state.posts.concat(responseJson)),
+          // comments: comments,
+          loaded: true,
+          refreshing: false
+        });
+      })
+      .catch(error => {
+        console.error(error);
+      });
   }
 
   render() {
@@ -38,13 +64,29 @@ export default class Feed extends Component {
     return (
       <Viewport.Tracker>
         <FlatList
-          data={this.state.data}
-          renderItem={({ item }) => <FeedCard post={item} />}
-          refreshing={true}
+          data={this.state.posts}
+          renderItem={({ item, index }) => (
+            <FeedCard post={item} index={index} />
+          )}
+          refreshing={this.state.refreshing}
           onRefresh={this.fetchFeed}
-          keyExtractor={item => item.url}
+          keyExtractor={item => item.id}
+          style={{ paddingBottom: 16 }}
+          initialNumToRender={3}
+          onEndReached={this.fetchMore.bind(this)}
+          onEndThreshold={0}
         />
       </Viewport.Tracker>
     );
   }
+}
+
+// placeholder code to make each item unique
+function addIndicesToPosts(posts) {
+  var i = 0;
+  posts.forEach(function(post) {
+    post.id = "" + i++;
+  });
+
+  return posts;
 }

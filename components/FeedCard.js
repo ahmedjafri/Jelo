@@ -18,29 +18,46 @@ export default class FeedCard extends React.PureComponent {
       index: props.index,
 
       // scroll pause/play
-      paused: true
+      paused: true,
+      topInView: false,
+      bottomInView: false
     };
   }
 
-  entered() {
-    console.log("entered");
-    this.setState({
-      paused: false
-    });
+  entered(isTop) {
+    this.setViewportState(isTop, true);
+
+    if (this.state.topInView && this.state.bottomInView) {
+      this.setState({
+        paused: false
+      });
+    }
   }
 
-  left() {
-    this.setState({
-      paused: true
-    });
+  left(isTop) {
+    this.setViewportState(isTop, false);
+
+    if (!(this.state.topInView && this.state.bottomInView)) {
+      this.setState({
+        paused: true
+      });
+    }
+  }
+
+  setViewportState(isTop, inView) {
+    if (isTop) {
+      this.state.topInView = inView;
+    } else {
+      this.state.bottomInView = inView;
+    }
   }
 
   render() {
     return (
       <View>
         <ViewportAwareView // top detector
-          onViewportEnter={this.entered.bind(this)}
-          onViewportLeave={this.left.bind(this)}
+          onViewportEnter={() => this.entered(true)}
+          onViewportLeave={() => this.left(true)}
         />
 
         <View style={styles.info}>
@@ -69,8 +86,8 @@ export default class FeedCard extends React.PureComponent {
           style={styles.image}
         />
         <ViewportAwareView // bottom detector
-          onViewportEnter={this.entered.bind(this)}
-          onViewportLeave={this.left.bind(this)}
+          onViewportEnter={() => this.entered(false)}
+          onViewportLeave={() => this.left(false)}
         />
       </View>
     );
