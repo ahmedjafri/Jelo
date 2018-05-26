@@ -4,8 +4,29 @@ import { View, StyleSheet } from "react-native";
 import Feed from "../components/Feed";
 
 export default class FeedScreen extends React.PureComponent {
+  static navigatorStyle = {
+    navBarHideOnScroll: true // make the nav bar hidden only after the user starts to scroll
+  };
+
   constructor(props) {
     super(props);
+    this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+  }
+
+  onNavigatorEvent(event) {
+    if (event.type == "NavBarButtonPress") {
+      // this is the event type for button presses
+      if (event.id == "camera") {
+        this.presentCameraView();
+      }
+    }
+  }
+
+  presentCameraView() {
+    this.props.navigator.showModal({
+      title: "Camera",
+      screen: "index.cameraScreen"
+    });
   }
 
   render() {

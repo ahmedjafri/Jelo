@@ -14,13 +14,11 @@ Navigation.startSingleScreenApp({
     navigatorButtons: {
       rightButtons: [
         {
-          title: "Camera"
+          title: "Camera",
+          id: "camera"
         }
       ]
     }
   },
-  animationType: Platform.OS === "ios" ? "slide-down" : "fade",
-  appStyle: {
-    navBarHideOnScroll: true // make the nav bar hidden only after the user starts to scroll
-  }
+  animationType: Platform.OS === "ios" ? "slide-down" : "fade"
 });
