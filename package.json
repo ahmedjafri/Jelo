@@ -1,29 +1,40 @@
 {
   "name": "Jelo",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "private": true,
-  "devDependencies": {
-    "babel-preset-react-native-stage-0": "^1.0.1",
-    "jest": "^22.4.4",
-    "jest-react-native": "^18.0.0",
-    "react-test-renderer": "16.3.1"
-  },
   "scripts": {
-    "start": "react-native start",
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
-    "test": "jest"
-  },
-  "jest": {
-    "preset": "react-native"
+    "postinstall": "node ./scripts/postinstall.js",
+    "start": "watchman watch-del-all && (adb reverse tcp:8081 tcp:8081 || true) && node node_modules/react-native/local-cli/cli.js start --reset-cache",
+    "xcode": "open ios/Jelo.xcodeproj",
+    "android": "cd android && ./gradlew installDebug",
+    "e2e": "detox test --configuration ios.sim.debug",
+    "e2e-release": "detox test --configuration ios.sim.release"
   },
   "dependencies": {
-    "@n1ru4l/react-time-ago": "^1.1.0",
-    "@skele/components": "^1.0.0-alpha.28",
-    "aws-amplify": "^0.4.1",
-    "aws-amplify-react-native": "^0.2.11",
     "react": "16.3.1",
-    "react-native": "~0.55.2",
-    "react-native-video": "^2.0.0"
+    "react-native": "0.55.2",
+    "react-native-animatable": "^1.1.0",
+    "react-native-navigation": "latest",
+    "react-native-video": "^2.0.0",
+    "@skele/components": "^1.0.0-alpha.28"
+  },
+  "devDependencies": {
+    "detox": "^5.0.0",
+    "mocha": "^3.4.2"
+  },
+  "detox": {
+    "specs": "test/e2e",
+    "configurations": {
+      "ios.sim.debug": {
+        "binaryPath": "ios/DerivedData/Jelo/Build/Products/Debug-iphonesimulator/Jelo.app",
+        "type": "ios.simulator",
+        "name": "iPhone 6s"
+      },
+      "ios.sim.release": {
+        "binaryPath": "ios/DerivedData/Jelo/Build/Products/Release-iphonesimulator/Jelo.app",
+        "type": "ios.simulator",
+        "name": "iPhone 6s"
+      }
+    }
   }
 }
