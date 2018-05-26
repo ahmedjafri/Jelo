@@ -19,5 +19,8 @@ Navigation.startSingleScreenApp({
       ]
     }
   },
-  animationType: Platform.OS === "ios" ? "slide-down" : "fade"
+  animationType: Platform.OS === "ios" ? "slide-down" : "fade",
+  appStyle: {
+    navBarHideOnScroll: true // make the nav bar hidden only after the user starts to scroll
+  }
 });
