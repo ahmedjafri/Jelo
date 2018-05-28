@@ -11,12 +11,15 @@
     "e2e-release": "detox test --configuration ios.sim.release"
   },
   "dependencies": {
+    "@skele/components": "^1.0.0-alpha.28",
+    "aws-amplify": "0.4.1",
+    "aws-amplify-react-native": "^0.2.11",
     "react": "16.3.1",
     "react-native": "0.55.2",
     "react-native-animatable": "^1.1.0",
+    "react-native-aws-cognito-js": "0.0.7",
     "react-native-navigation": "latest",
-    "react-native-video": "^2.0.0",
-    "@skele/components": "^1.0.0-alpha.28"
+    "react-native-video": "^2.0.0"
   },
   "devDependencies": {
     "detox": "^5.0.0",
