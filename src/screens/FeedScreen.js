@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { View, StyleSheet } from "react-native";
-import Feed from "../components/Feed";
+import { View, StyleSheet, requireNativeComponent } from "react-native";
+//import Feed from "../components/Feed";
+import FeedView from "../components/FeedView.js";
 
 export default class FeedScreen extends React.PureComponent {
   static navigatorStyle = {
@@ -32,7 +33,7 @@ export default class FeedScreen extends React.PureComponent {
   render() {
     return (
       <View style={styles.container}>
-        <Feed />
+        <FeedView feedUrl={"hello"} style={{ flex: 1 }} />
       </View>
     );
   }
@@ -40,7 +41,7 @@ export default class FeedScreen extends React.PureComponent {
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: "center",
-    backgroundColor: "#ecf0f1"
+    flex: 1,
+    alignItems: "stretch"
   }
 });

@@ -76,6 +76,7 @@ export default class Feed extends React.PureComponent {
           initialNumToRender={3}
           onEndReached={this.fetchMore.bind(this)}
           onEndThreshold={0}
+          scrollEventThrottle={16}
           removeClippedSubviews={true}
         />
       </Viewport.Tracker>

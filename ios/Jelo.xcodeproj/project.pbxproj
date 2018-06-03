@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -23,8 +24,10 @@
 		2647D65F1DB175C200B23722 /* libReactNativeNavigation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2647D65E1DB175B300B23722 /* libReactNativeNavigation.a */; };
 		7B9B39861DEB4091004A6281 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B9B39631DEB4076004A6281 /* libRCTAnimation.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
-		A220301620B929D300D1F067 /* libRCTVideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A220301420B929CB00D1F067 /* libRCTVideo.a */; };
 		856B67FA9357436E8BD3C0E2 /* libRNAWSCognito.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C74B28089DA4ACE9B8698DA /* libRNAWSCognito.a */; };
+		A220301620B929D300D1F067 /* libRCTVideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A220301420B929CB00D1F067 /* libRCTVideo.a */; };
+		A223AC7D20C124D200EFE1D5 /* FeedManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A223AC7C20C124D200EFE1D5 /* FeedManager.swift */; };
+		A223ACA620C1257F00EFE1D5 /* FeedManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A223ACA520C1257F00EFE1D5 /* FeedManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -245,6 +248,13 @@
 			remoteGlobalIDString = 641E28441F0EEC8500443AF6;
 			remoteInfo = "RCTVideo-tvOS";
 		};
+		A265A8C020BE48CA00DCD84E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A4AE21BCA85143AFA219B61F /* RNAWSCognito.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNAWSCognito;
+		};
 		E5E62BA91FFA2FF40025960D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */;
@@ -313,6 +323,7 @@
 		00E356EE1AD99517003FC87E /* JeloTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JeloTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* JeloTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JeloTests.m; sourceTree = "<group>"; };
+		0C74B28089DA4ACE9B8698DA /* libRNAWSCognito.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNAWSCognito.a; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* Jelo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jelo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -328,8 +339,10 @@
 		7B9B395C1DEB4076004A6281 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		A220300C20B929CB00D1F067 /* RCTVideo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTVideo.xcodeproj; path = "../node_modules/react-native-video/ios/RCTVideo.xcodeproj"; sourceTree = "<group>"; };
-		A4AE21BCA85143AFA219B61F /* RNAWSCognito.xcodeproj */ = {isa = PBXFileReference; name = "RNAWSCognito.xcodeproj"; path = "../node_modules/react-native-aws-cognito-js/ios/RNAWSCognito.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
-		0C74B28089DA4ACE9B8698DA /* libRNAWSCognito.a */ = {isa = PBXFileReference; name = "libRNAWSCognito.a"; path = "libRNAWSCognito.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		A223AC7B20C124D200EFE1D5 /* Jelo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Jelo-Bridging-Header.h"; sourceTree = "<group>"; };
+		A223AC7C20C124D200EFE1D5 /* FeedManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FeedManager.swift; path = Jelo/FeedManager.swift; sourceTree = "<group>"; };
+		A223ACA520C1257F00EFE1D5 /* FeedManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FeedManager.m; path = Jelo/FeedManager.m; sourceTree = "<group>"; };
+		A4AE21BCA85143AFA219B61F /* RNAWSCognito.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNAWSCognito.xcodeproj; path = "../node_modules/react-native-aws-cognito-js/ios/RNAWSCognito.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -453,6 +466,9 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				A223AC7C20C124D200EFE1D5 /* FeedManager.swift */,
+				A223AC7B20C124D200EFE1D5 /* Jelo-Bridging-Header.h */,
+				A223ACA520C1257F00EFE1D5 /* FeedManager.m */,
 			);
 			name = Jelo;
 			sourceTree = "<group>";
@@ -544,6 +560,7 @@
 				00E356EF1AD99517003FC87E /* JeloTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				A220301520B929D300D1F067 /* Frameworks */,
+				A265A89620BE48C600DCD84E /* Recovered References */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -572,6 +589,22 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A265A89620BE48C600DCD84E /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				0C74B28089DA4ACE9B8698DA /* libRNAWSCognito.a */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		A265A8BD20BE48C800DCD84E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A265A8C120BE48CA00DCD84E /* libRNAWSCognito.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -624,7 +657,12 @@
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = L9HG6WQQZ9;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
+					};
+					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = L9HG6WQQZ9;
+						LastSwiftMigration = 0930;
 					};
 				};
 			};
@@ -691,6 +729,10 @@
 				{
 					ProductGroup = 2647D65A1DB175B300B23722 /* Products */;
 					ProjectRef = 2647D6591DB175B300B23722 /* ReactNativeNavigation.xcodeproj */;
+				},
+				{
+					ProductGroup = A265A8BD20BE48C800DCD84E /* Products */;
+					ProjectRef = A4AE21BCA85143AFA219B61F /* RNAWSCognito.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -912,6 +954,13 @@
 			remoteRef = A220301320B929CB00D1F067 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		A265A8C120BE48CA00DCD84E /* libRNAWSCognito.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNAWSCognito.a;
+			remoteRef = A265A8C020BE48CA00DCD84E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		E5E62BAA1FFA2FF40025960D /* libfishhook.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1019,8 +1068,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A223AC7D20C124D200EFE1D5 /* FeedManager.swift in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				A223ACA620C1257F00EFE1D5 /* FeedManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1050,7 +1101,9 @@
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = L9HG6WQQZ9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1075,8 +1128,10 @@
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = L9HG6WQQZ9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1098,7 +1153,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEAD_CODE_STRIPPING = NO;
+				DEVELOPMENT_TEAM = L9HG6WQQZ9;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-navigation/ios/**",
@@ -1111,6 +1168,9 @@
 					"-l\"c++\"",
 				);
 				PRODUCT_NAME = Jelo;
+				SWIFT_OBJC_BRIDGING_HEADER = "Jelo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -1118,6 +1178,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = L9HG6WQQZ9;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-navigation/ios/**",
@@ -1130,6 +1192,8 @@
 					"-l\"c++\"",
 				);
 				PRODUCT_NAME = Jelo;
+				SWIFT_OBJC_BRIDGING_HEADER = "Jelo-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
