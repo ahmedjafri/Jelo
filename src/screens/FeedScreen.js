@@ -14,6 +14,18 @@ export default class FeedScreen extends React.PureComponent {
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
   }
 
+  async fetchFeed() {
+    let response = await fetch(
+      "http://develop.t89dqruqnm.us-east-1.elasticbeanstalk.com/api/v1/feed"
+    );
+    let posts = await response.json();
+    this.feedRef.updateNative(posts);
+  }
+
+  componentDidMount() {
+    this.fetchFeed();
+  }
+
   onNavigatorEvent(event) {
     if (event.type == "NavBarButtonPress") {
       // this is the event type for button presses
@@ -30,10 +42,20 @@ export default class FeedScreen extends React.PureComponent {
     });
   }
 
+  dataRequested = e => {
+    console.log(e.nativeEvent.numItemsRequested);
+    this.fetchFeed();
+  };
+
   render() {
     return (
       <View style={styles.container}>
-        <FeedView feedUrl={"hello"} style={{ flex: 1 }} />
+        <FeedView
+          style={{ flex: 1 }}
+          posts={[]}
+          onDataRequested={this.dataRequested}
+          ref={e => (this.feedRef = e)}
+        />
       </View>
     );
   }

@@ -12,35 +12,91 @@ import Foundation
 class FeedManager: RCTViewManager {
   override func view() -> UIView! {
     let v = FeedView.init()
-    if v.feedUrl != "" {
-      v.backgroundColor = UIColor.green
+    if v.posts.count == 0 {
+      v.backgroundColor = UIColor.red
     }
     return v
+  }
+  
+  func updateFromManager(_ node: NSNumber, posts: NSArray) { // 1
+    DispatchQueue.main.async {                                // 2
+      let component = self.bridge.uiManager.view(             // 3
+        forReactTag: node                                     // 4
+        ) as! FeedView                                       // 5
+      component.updatePosts(posts)                          // 6
+    }
   }
 }
 
 class FeedView: UITableView {
-  var feedUrl: String = ""
-  
+  var posts: NSArray = []
+  var onDataRequested: RCTDirectEventBlock?
+  private var reachedEnd: Bool = false
+
   override func didMoveToSuperview() {
     super.didMoveToSuperview()
     
     self.dataSource = self
+    self.delegate = self
+    self.prefetchDataSource = self
+    
+    onDataRequested(numItemsRequested: 10)
+  }
+  
+  func onDataRequested(numItemsRequested: Int) {
+      if onDataRequested != nil {
+        onDataRequested!(["numItemsRequested": numItemsRequested])
+      }
+    }
+  
+  
+  func updatePosts(_ posts: NSArray) {
+    if posts.count == 0 {
+      reachedEnd = true
+      return
+    }
+    
+    self.posts = self.posts.addingObjects(from: posts as! [Any]) as NSArray
+    self.reloadData()
   }
 }
 
-extension FeedView: UITableViewDataSource {
+extension FeedView: UITableViewDataSource, UITableViewDelegate, UITableViewDataSourcePrefetching {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = UITableViewCell.init(style: UITableViewCellStyle.default, reuseIdentifier: "reuse")
-    cell.textLabel?.text = "test"
-    return cell
+    var cell = tableView.dequeueReusableCell(withIdentifier: "FeedManagerTableViewCell")
+    if cell == nil {
+      cell = UITableViewCell.init(style: UITableViewCellStyle.default, reuseIdentifier: "FeedManagerTableViewCell")
+    }
+    var post = posts[indexPath.row] as! Dictionary<String, AnyObject>
+    cell!.textLabel?.text = (post["url"] as! String)
+    return cell!
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 10
+    return posts.count
   }
   
   func numberOfSections(in tableView: UITableView) -> Int {
     return 1
+  }
+  
+  func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+
+  }
+  
+  func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+    // correctly retrieve the indexPaths
+    var loadNext = false
+    for indexPath in indexPaths {
+      if(posts.count < indexPath.row ) {
+        loadNext = true
+        break
+      }
+    }
+    
+    if loadNext {
+      onDataRequested(numItemsRequested: 10)
+    }
+
   }
 }

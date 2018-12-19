@@ -5,3 +5,6 @@
 
 #import <React/RCTViewManager.h>
 #import <React/UIView+React.h>
+#import <React/RCTEventEmitter.h>
+#import <React/RCTUIManager.h>
+
